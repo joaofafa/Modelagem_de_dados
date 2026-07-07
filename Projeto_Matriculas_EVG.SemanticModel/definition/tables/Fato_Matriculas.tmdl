@@ -1,0 +1,74 @@
+table Fato_Matriculas
+	lineageTag: 71fcf51b-5674-4c12-8acd-d230a4f23c07
+
+	column cod_matricula
+		dataType: string
+		lineageTag: 2fee5faf-64ad-4381-9065-df05fdeb7534
+		summarizeBy: none
+		sourceColumn: cod_matricula
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_matricula
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9c18d493-5480-4612-824d-8f6cb70aecde
+		summarizeBy: none
+		sourceColumn: dt_matricula
+
+		variation Variation
+			isDefault
+			relationship: 7347d619-ed21-414b-8890-108d534e4a38
+			defaultHierarchy: LocalDateTable_e4f39b77-ac15-4120-9b59-7b1d39efffc4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_turma
+		dataType: int64
+		formatString: 0
+		lineageTag: cc49a4aa-d43f-4c04-bead-436284e314aa
+		summarizeBy: none
+		sourceColumn: cod_turma
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_curso
+		dataType: int64
+		formatString: 0
+		lineageTag: 71c7e14f-3cca-4b1c-914c-bc0dc2f05259
+		summarizeBy: none
+		sourceColumn: cod_curso
+
+		annotation SummarizationSetBy = Automatic
+
+	column codigo_pessoa
+		dataType: string
+		lineageTag: 8a44fdb6-6c79-4bab-b954-eafa6e528091
+		summarizeBy: none
+		sourceColumn: codigo_pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column sit_matricula
+		dataType: string
+		lineageTag: 0c68c3fd-6841-4ac7-aae1-d73d5674d757
+		summarizeBy: none
+		sourceColumn: sit_matricula
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Matriculas = m
+		mode: import
+		source =
+				let
+				    Fonte = sample_evg_enriquecido,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"cod_matricula", "dt_matricula", "cod_turma", "cod_curso", "codigo_pessoa", "sit_matricula"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas", {"cod_matricula"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Duplicatas Removidas",{{"dt_matricula", type datetime}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

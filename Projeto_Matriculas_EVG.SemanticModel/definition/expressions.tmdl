@@ -1,0 +1,39 @@
+expression sample_evg_enriquecido =
+		let
+		    Fonte = Csv.Document(File.Contents("C:\Users\djmar\Desktop\Atividade_Modelagem\Data\sample_evg_enriquecido.csv"),[Delimiter=",", Columns=25, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"cod_matricula", type text}, {"dt_matricula", type datetime}, {"nacionalidade", type text}, {"cod_turma", Int64.Type}, {"nome_turma", type text}, {"modalidade_turma", type text}, {"cod_curso", Int64.Type}, {"nome_curso", type text}, {"carga_horaria", Int64.Type}, {"dt_fim", type datetime}, {"sit_turma", type text}, {"instituicao", type text}, {"municipio_pessoa", type text}, {"uf_pessoa", type text}, {"conteudista", type text}, {"tematica", type text}, {"codigo_pessoa", type text}, {"sexo", type text}, {"idade", Int64.Type}, {"sit_matricula", type text}, {"poder", type text}, {"esfera", type text}, {"email_pessoa", type text}, {"telefone_pessoa", Int64.Type}, {"email_conteudista", type text}}),
+		    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", each [cod_matricula] <> null and [cod_matricula] <> ""),
+		    #"Linhas Filtradas1" = Table.SelectRows(#"Linhas Filtradas", each [dt_matricula] <> null and [dt_matricula] <> ""),
+		    #"Linhas Filtradas2" = Table.SelectRows(#"Linhas Filtradas1", each [nacionalidade] <> null and [nacionalidade] <> ""),
+		    #"Linhas Filtradas3" = Table.SelectRows(#"Linhas Filtradas2", each [cod_turma] <> null and [cod_turma] <> ""),
+		    #"Linhas Filtradas4" = Table.SelectRows(#"Linhas Filtradas3", each [nome_turma] <> null and [nome_turma] <> ""),
+		    #"Linhas Filtradas5" = Table.SelectRows(#"Linhas Filtradas4", each [modalidade_turma] <> null and [modalidade_turma] <> ""),
+		    #"Linhas Filtradas6" = Table.SelectRows(#"Linhas Filtradas5", each [cod_curso] <> null and [cod_curso] <> ""),
+		    #"Linhas Filtradas7" = Table.SelectRows(#"Linhas Filtradas6", each [nome_curso] <> null and [nome_curso] <> ""),
+		    #"Linhas Filtradas8" = Table.SelectRows(#"Linhas Filtradas7", each [carga_horaria] <> null and [carga_horaria] <> ""),
+		    #"Linhas Filtradas9" = Table.SelectRows(#"Linhas Filtradas8", each [dt_fim] <> null and [dt_fim] <> ""),
+		    #"Linhas Filtradas10" = Table.SelectRows(#"Linhas Filtradas9", each [sit_turma] <> null and [sit_turma] <> ""),
+		    #"Linhas Filtradas11" = Table.SelectRows(#"Linhas Filtradas10", each [instituicao] <> null and [instituicao] <> ""),
+		    #"Linhas Filtradas12" = Table.SelectRows(#"Linhas Filtradas11", each [municipio_pessoa] <> null and [municipio_pessoa] <> ""),
+		    #"Linhas Filtradas13" = Table.SelectRows(#"Linhas Filtradas12", each [uf_pessoa] <> null and [uf_pessoa] <> ""),
+		    #"Linhas Filtradas14" = Table.SelectRows(#"Linhas Filtradas13", each [conteudista] <> null and [conteudista] <> ""),
+		    #"Linhas Filtradas15" = Table.SelectRows(#"Linhas Filtradas14", each [tematica] <> null and [tematica] <> ""),
+		    #"Linhas Filtradas16" = Table.SelectRows(#"Linhas Filtradas15", each [codigo_pessoa] <> null and [codigo_pessoa] <> ""),
+		    #"Linhas Filtradas17" = Table.SelectRows(#"Linhas Filtradas16", each [sexo] <> null and [sexo] <> ""),
+		    #"Linhas Filtradas18" = Table.SelectRows(#"Linhas Filtradas17", each [idade] <> null and [idade] <> ""),
+		    #"Linhas Filtradas19" = Table.SelectRows(#"Linhas Filtradas18", each [sit_matricula] <> null and [sit_matricula] <> ""),
+		    #"Linhas Filtradas20" = Table.SelectRows(#"Linhas Filtradas19", each [poder] <> null and [poder] <> ""),
+		    #"Linhas Filtradas21" = Table.SelectRows(#"Linhas Filtradas20", each [esfera] <> null and [esfera] <> ""),
+		    #"Linhas Filtradas22" = Table.SelectRows(#"Linhas Filtradas21", each [email_pessoa] <> null and [email_pessoa] <> ""),
+		    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Linhas Filtradas22",{{"telefone_pessoa", type text}}),
+		    #"Linhas Filtradas23" = Table.SelectRows(#"Tipo Alterado1", each [telefone_pessoa] <> null and [telefone_pessoa] <> ""),
+		    #"Linhas Filtradas24" = Table.SelectRows(#"Linhas Filtradas23", each [email_conteudista] <> null and [email_conteudista] <> "")
+		in
+		    #"Linhas Filtradas24"
+	lineageTag: e94512f5-0d89-482d-926c-08353a122de3
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

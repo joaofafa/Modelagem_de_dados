@@ -1,0 +1,24 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["sample_evg_enriquecido","Fato_Matriculas","Dim_Cursos","Dim_Turmas","Dim_Alunos"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fato_Matriculas
+ref table DateTableTemplate_f48afe87-39ca-481a-9dd0-bc833292d053
+ref table LocalDateTable_e4f39b77-ac15-4120-9b59-7b1d39efffc4
+ref table Dim_Cursos
+ref table Dim_Turmas
+ref table LocalDateTable_e33d10c6-cf04-4790-9059-a4c32c2277ee
+ref table Dim_Alunos
+
+ref cultureInfo pt-BR
+

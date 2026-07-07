@@ -1,0 +1,108 @@
+table Dim_Alunos
+	lineageTag: 17b4e079-39ce-4c8c-a943-8df88be5827f
+
+	column codigo_pessoa
+		dataType: string
+		lineageTag: 13d46b89-9ef9-42a4-8262-01a6ed20621d
+		summarizeBy: none
+		sourceColumn: codigo_pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column nacionalidade
+		dataType: string
+		lineageTag: 72969c3b-c27b-4b54-b944-4fd6b66e62f6
+		summarizeBy: none
+		sourceColumn: nacionalidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column sexo
+		dataType: string
+		lineageTag: 0724a9b9-8aa5-433f-9756-45e54c1b5512
+		summarizeBy: none
+		sourceColumn: sexo
+
+		annotation SummarizationSetBy = Automatic
+
+	column idade
+		dataType: int64
+		formatString: 0
+		lineageTag: ae6a352c-da54-4780-9c9f-50380fc88de3
+		summarizeBy: none
+		sourceColumn: idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column instituicao
+		dataType: string
+		lineageTag: bcda7354-d81e-44f0-8417-4d6856df9d5c
+		summarizeBy: none
+		sourceColumn: instituicao
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf_pessoa
+		dataType: string
+		lineageTag: 11e0edbe-8479-40b9-935d-ab7accce8c8d
+		summarizeBy: none
+		sourceColumn: uf_pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column municipio_pessoa
+		dataType: string
+		lineageTag: 3c4d53fb-f1fb-4b65-8c70-883e80344add
+		summarizeBy: none
+		sourceColumn: municipio_pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column poder
+		dataType: string
+		lineageTag: 356292eb-fad1-4386-9ca9-a4b8c9975189
+		summarizeBy: none
+		sourceColumn: poder
+
+		annotation SummarizationSetBy = Automatic
+
+	column esfera
+		dataType: string
+		lineageTag: 283f4e23-da5c-44d9-8d65-9d8f68139ab5
+		summarizeBy: none
+		sourceColumn: esfera
+
+		annotation SummarizationSetBy = Automatic
+
+	column email_pessoa
+		dataType: string
+		lineageTag: 53c2cb74-a845-4e67-b48b-5bdb60fee656
+		summarizeBy: none
+		sourceColumn: email_pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column telefone_pessoa
+		dataType: string
+		lineageTag: 6d5a5f61-bd4f-4800-9cdf-587f7577e246
+		summarizeBy: none
+		sourceColumn: telefone_pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Alunos = m
+		mode: import
+		source =
+				let
+				    Fonte = sample_evg_enriquecido,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"nacionalidade", "instituicao", "municipio_pessoa", "uf_pessoa", "codigo_pessoa", "sexo", "idade", "poder", "esfera", "email_pessoa", "telefone_pessoa"}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Outras Colunas Removidas",{"codigo_pessoa", "nacionalidade", "sexo", "idade", "instituicao", "uf_pessoa", "municipio_pessoa", "poder", "esfera", "email_pessoa", "telefone_pessoa"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Colunas Reordenadas", {"codigo_pessoa"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Duplicatas Removidas",{{"telefone_pessoa", type text}, {"idade", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

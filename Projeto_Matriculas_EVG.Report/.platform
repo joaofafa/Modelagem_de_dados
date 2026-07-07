@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Projeto_Matriculas_EVG"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "565b8e67-1e6f-410d-b42a-78b6c67df23e"
+  }
+}

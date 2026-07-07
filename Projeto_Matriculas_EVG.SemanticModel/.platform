@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Projeto_Matriculas_EVG"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5622ee3a-7d33-4eb1-a267-fbe916700e45"
+  }
+}

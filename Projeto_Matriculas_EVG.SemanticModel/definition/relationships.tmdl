@@ -1,0 +1,22 @@
+relationship 7347d619-ed21-414b-8890-108d534e4a38
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Matriculas.dt_matricula
+	toColumn: LocalDateTable_e4f39b77-ac15-4120-9b59-7b1d39efffc4.Date
+
+relationship 7e1c1948-6bfd-44a0-ada8-94d64ebd0a81
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Turmas.dt_fim
+	toColumn: LocalDateTable_e33d10c6-cf04-4790-9059-a4c32c2277ee.Date
+
+relationship e613de9a-a24e-4624-3a9b-3a7bb914a960
+	fromColumn: Fato_Matriculas.codigo_pessoa
+	toColumn: Dim_Alunos.codigo_pessoa
+
+relationship f7d76894-8f5f-6a0c-1ef0-53520dd9bdb2
+	fromColumn: Fato_Matriculas.cod_curso
+	toColumn: Dim_Cursos.cod_curso
+
+relationship 0acb79d6-3898-6335-a403-af651177c306
+	fromColumn: Fato_Matriculas.cod_turma
+	toColumn: Dim_Turmas.cod_turma
+

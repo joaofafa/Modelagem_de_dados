@@ -1,0 +1,68 @@
+table Dim_Cursos
+	lineageTag: 24d4ce6e-2925-4bea-8c1e-99e007111173
+
+	column cod_curso
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ff7a5c1-33d9-4079-855b-6eedbd23078e
+		summarizeBy: none
+		sourceColumn: cod_curso
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_curso
+		dataType: string
+		lineageTag: a185d31c-3268-4dff-8b02-f5815287ff23
+		summarizeBy: none
+		sourceColumn: nome_curso
+
+		annotation SummarizationSetBy = Automatic
+
+	column carga_horaria
+		dataType: int64
+		formatString: 0
+		lineageTag: 65547eb0-76f4-4a8b-9979-ebb4abe78ee6
+		summarizeBy: none
+		sourceColumn: carga_horaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column conteudista
+		dataType: string
+		lineageTag: 03e79d76-5872-4ca1-b980-e4524eda77c6
+		summarizeBy: none
+		sourceColumn: conteudista
+
+		annotation SummarizationSetBy = Automatic
+
+	column tematica
+		dataType: string
+		lineageTag: ae790360-e299-4ef9-bcf7-83bb37379486
+		summarizeBy: none
+		sourceColumn: tematica
+
+		annotation SummarizationSetBy = Automatic
+
+	column email_conteudista
+		dataType: string
+		lineageTag: a38c4c1f-5202-4256-8cc5-4f421c341cbc
+		summarizeBy: none
+		sourceColumn: email_conteudista
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Cursos = m
+		mode: import
+		source =
+				let
+				    Fonte = sample_evg_enriquecido,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"cod_curso", "nome_curso", "carga_horaria", "conteudista", "tematica", "email_conteudista"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas", {"cod_curso"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Duplicatas Removidas",{{"cod_curso", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

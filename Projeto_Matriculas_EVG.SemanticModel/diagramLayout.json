@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 241.56058892828753,
+            "y": 276.3281456404348
+          },
+          "nodeIndex": "Dim_Alunos",
+          "nodeLineageTag": "17b4e079-39ce-4c8c-a943-8df88be5827f",
+          "size": {
+            "height": 298.01378008009368,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 981.23973781145651,
+            "y": 329.2546391121511
+          },
+          "nodeIndex": "Dim_Cursos",
+          "nodeLineageTag": "24d4ce6e-2925-4bea-8c1e-99e007111173",
+          "size": {
+            "height": 222.01378008009371,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 651.18192616753777,
+            "y": 385.24933936884293
+          },
+          "nodeIndex": "Dim_Turmas",
+          "nodeLineageTag": "b1ecd353-5e0e-4617-b044-8bf8746eead9",
+          "size": {
+            "height": 212.5702074308744,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 568.09166636027544,
+            "y": 16.911997766866733
+          },
+          "nodeIndex": "Fato_Matriculas",
+          "nodeLineageTag": "71fcf51b-5674-4c12-8acd-d230a4f23c07",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 1
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 70.955543900968863,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}
