@@ -43,5 +43,5 @@ A estrutura foi dividida seguindo o modelo Estrela (Star Schema), facilitando a 
 
 
 <p align="center">
-  <img src="visual.png" alt="Visual do Dashboard Gerencial" width="100%">
+  <img src="Visual.png" alt="Visual do Dashboard Gerencial" width="100%">
 </p>
