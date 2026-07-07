@@ -41,14 +41,15 @@ A estrutura foi dividida seguindo o modelo Estrela (Star Schema), facilitando a 
 * **DrawDB** (Planejamento do Modelo Lógico)
 
 ---
-
+## Modelagem Dimensional (Star Schema): Estrutura do Projeto EVG
+ 
 <p align="center">
   <img src="Modelo Lógico e Conceitual.png" alt="Visual do Dashboard Gerencial" width="100%">
 </p>
 
 
 ---
-
+## Visão Estratégica: Análise de Matrículas da EVG
 
 <p align="center">
   <img src="Visual.png" alt="Visual do Dashboard Gerencial" width="100%">
