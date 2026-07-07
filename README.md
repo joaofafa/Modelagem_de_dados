@@ -40,6 +40,12 @@ A estrutura foi dividida seguindo o modelo Estrela (Star Schema), facilitando a 
 * **Power BI** (Modelagem e Visualização)
 * **DrawDB** (Planejamento do Modelo Lógico)
 
+---
+
+<p align="center">
+  <img src="Modelo Lógico e Conceitual.png" alt="Visual do Dashboard Gerencial" width="100%">
+</p>
+
 
 ---
 
